@@ -1,0 +1,211 @@
+/* Общий стиль страниц воронки «Долги под контролем».
+   Мобильный — основной: сначала телефон, потом расширяем.
+   Никаких внешних шрифтов и скриптов: только системные, как в файлах-инструментах. */
+
+:root {
+  --ink: #151a2d;
+  --muted: #5b6478;
+  --line: #e4e7f0;
+  --accent: #2f5bff;
+  --accent-dark: #1c3fd0;
+  --bg: #f6f7fb;
+  --card: #fff;
+  --good: #0f7b43;
+  --warn: #b42318;
+  --radius: 14px;
+  /* Размеры текста: базовый никогда не ниже 16px — иначе Safari зумит при вводе */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--ink);
+  background: #fff;
+  /* место под закреплённую кнопку на телефоне */
+  padding-bottom: 84px;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 18px; }
+
+/* ---------- шапка ---------- */
+
+.hero {
+  background: linear-gradient(160deg, #1c2440, #2f5bff);
+  color: #fff;
+  padding: 40px 0 34px;
+}
+.hero h1 { font-size: var(--text-3xl); line-height: 1.2; margin: 0 0 12px; }
+.hero p { font-size: var(--text-lg); margin: 0 0 20px; opacity: 0.93; }
+.hero .kicker {
+  display: inline-block;
+  font-size: var(--text-sm);
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+.hero .btn { background: #fff; color: #1c2440; }
+.hero .muted { color: rgba(255, 255, 255, 0.8); }
+
+/* ---------- кнопки ---------- */
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--text-base);
+  padding: 15px 26px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  /* палец: не меньше 48px по высоте */
+  min-height: 48px;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+.btn:active { background: var(--accent-dark); }
+.btn.wide { display: block; width: 100%; }
+.btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+.btn.ghost:active { background: #eef2ff; }
+
+.button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.button-row .btn { flex: 1 1 220px; }
+
+/* ---------- секции ---------- */
+
+section { padding: 36px 0; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: 0; }
+h2 { font-size: var(--text-2xl); margin: 0 0 16px; line-height: 1.25; }
+h3 { font-size: var(--text-lg); margin: 0 0 6px; }
+p { margin: 0 0 14px; }
+.muted { color: var(--muted); font-size: var(--text-sm); }
+.lead { font-size: var(--text-lg); }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: var(--card);
+}
+.card p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
+.card.hot { border-color: var(--accent); box-shadow: 0 8px 30px rgba(47, 91, 255, 0.15); }
+.card .num { font-size: var(--text-2xl); font-weight: 800; margin: 6px 0 10px; }
+.tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+ul, ol { padding-left: 22px; margin: 0 0 14px; }
+li { margin-bottom: 8px; }
+
+/* ---------- блок захвата ---------- */
+
+.capture {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 18px;
+  margin-top: 8px;
+}
+.capture h2, .capture h3 { margin-top: 0; }
+.capture .btn { margin-top: 6px; }
+.capture .otmetka {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+/* ---------- частые вопросы ---------- */
+
+details {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+details p { margin: 10px 0 0; color: var(--muted); font-size: var(--text-sm); }
+
+/* ---------- таблицы ---------- */
+
+table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+th { color: var(--muted); font-weight: 600; }
+
+/* ---------- подвал ---------- */
+
+footer { padding: 30px 0 40px; background: var(--bg); }
+footer .muted { margin-bottom: 10px; }
+footer a { color: var(--accent); }
+
+/* ---------- закреплённая кнопка на телефоне ---------- */
+
+.mobile-cta { display: none; }
+
+@media (max-width: 767px) {
+  .mobile-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 14px 14px;
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -2px 12px rgba(20, 40, 90, 0.08);
+    z-index: 50;
+  }
+  .mobile-cta .podskazka {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 6px;
+  }
+}
+
+/* ---------- шире экрана ---------- */
+
+@media (min-width: 768px) {
+  .hero { padding: 56px 0 48px; }
+  .hero h1 { font-size: 2.4rem; }
+  section { padding: 44px 0; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid.tri { grid-template-columns: repeat(3, 1fr); }
+  body { padding-bottom: 0; }
+  .mobile-cta { display: none; }
+}
+
+@media (min-width: 1024px) {
+  .grid.tri { grid-template-columns: repeat(3, 1fr); }
+  .hero h1 { font-size: 2.75rem; }
+}
+
+/* Печать и «уменьшить движение» — как просит система */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
