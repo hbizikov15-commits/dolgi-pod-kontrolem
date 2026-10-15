@@ -1,0 +1,1 @@
+# dolgi-pod-kontrolem
